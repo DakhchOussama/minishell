@@ -12,6 +12,31 @@
 
 #include "minishell.h"
 
+void ft_signal(int signum)
+{
+	g_data.exit_code = 128 + signum;
+	if (signum == SIGINT)
+	{
+		if (g_data.forks == 1 || g_data.forks == 0)
+			printf("\n");
+		if (g_data.forks == 0)
+			rl_on_new_line();
+		rl_redisplay();
+	}
+	else if (signum == SIGQUIT)
+	{
+		if (g_data.forks == 1)
+		{
+			printf("Quit: \n");
+		}
+		else
+		{
+			rl_on_new_line();
+			rl_redisplay();
+		}
+	}
+}
+
 char	*get_value(char *line)
 {
 	int	start;

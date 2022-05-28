@@ -23,7 +23,18 @@ struct s_data
 {
 	char	*line;
 	int		exit_code;
+	int		forks;
+	int		temp;
 }		g_data;
+
+typedef struct s_nodes
+{
+	char			**cmd;
+	int				fi[2];
+	struct s_nodes	*prev;
+	struct s_nodes	*next;
+} t_nodes;
+
 
 typedef struct s_env // env parsing
 {
@@ -40,4 +51,19 @@ char	*get_value(char *line);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
+void	ft_signal(int signum);
+// void ft_shell(char *envp[], t_env *env, int dup);
+void ft_shell(void);
+char	*ft_strtrim(char const *s1, char const *set);
+t_nodes **parsing (void);
+int		check_pipes(void);
+t_nodes **ft_parsing(t_nodes **nodes);
+int		check_quotes(void);
+void	ctrl_d(int num);
+char	*ft_strchr(const char *s, int c);
+int		check_pipes_two(char *str);
+int		check_first_last(void);
+int		print_error(void);
+
+
 #endif

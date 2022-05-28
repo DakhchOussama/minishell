@@ -58,6 +58,34 @@ char	*ft_strdup(const char *s1)
 	return (cp);
 }
 
+static size_t	s2_len(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	len;
+
+	i = -1;
+	len = ft_strlen(s1);
+	while (set[++i] && *s1)
+	{
+		if (*s1 == set[i])
+		{
+			len--;
+			s1++;
+			i = -1;
+		}
+	}
+	i = -1;
+	while (set[++i] && *s1)
+	{
+		if (s1[len - 1] == set[i])
+		{
+			len--;
+			i = -1;
+		}
+	}
+	return (len);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*test;
@@ -86,3 +114,43 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	test[j] = '\0';
 	return (test);
 }
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	len;
+	size_t	i;
+	char	*s2;
+
+	if (!s1)
+		return (0);
+	len = s2_len(s1, set);
+	i = 0;
+	while (set[i] && *s1)
+	{
+		if (*s1 == set[i])
+		{
+			s1++;
+			i = -1;
+		}
+		i++;
+	}
+	s2 = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s2)
+		return (0);
+	ft_strlcpy(s2, (char *)s1, len + 1);
+	return (s2);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	unsigned char	*t;
+
+	t = (unsigned char *)s;
+	while (*t != (unsigned char)c && *t)
+		t++;
+	if (*t == (unsigned char)c)
+		return ((char *)t);
+	else
+		return (0);
+}
+
