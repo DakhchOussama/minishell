@@ -86,6 +86,7 @@ t_nodes	**parsing(void)
 	nodes = malloc(sizeof(t_nodes *));
 	if (!nodes)
 		return (perror("Error"), exit (EXIT_FAILURE), NULL);
+	*nodes = NULL;
 	if (check_pipes() == 0 || check_quotes() == 0)
 		return (NULL);
 	temp = ft_split2(g_data.line, '|');

@@ -22,6 +22,7 @@
 
 struct s_data
 {
+	int		exp;
 	char	*line;
 	int		exit_code;
 	int		forks;
@@ -98,6 +99,7 @@ void		print_str(char *str);
 int			check_n(char **str, int *j);
 void		ft_pwd(void);
 void		ft_env1(t_env *env);
+void	ft_env(t_env *env);
 void	execution(char **str, char *envp[], t_env *env);
 int	execute_other(t_nodes **nodes, char **envp, t_env *env);
 
@@ -108,6 +110,15 @@ void	free_node(t_nodes **node);
 char	*get_home(t_env *env);
 char	*add_home(char *str, char *home);
 int		change_dir(t_env *env, char *name, char *value, int len);
-int ft_cd2(char **str, int i, t_env *env);
-void ft_cd(char **str, t_env *env);
+int		ft_cd2(char **str, int i, t_env *env);
+void	ft_cd(char **str, t_env *env);
+t_env	*ft_unset(t_env * env, char **cmd, char **envp);
+int		check_valid(char *var);
+t_env	*ft_unset2(t_env *env, t_env *tmp, char *cmd_tmp, char **envp);
+t_env	*ft_pop(char *name, t_env *env, char **envp);
+void	free_env(t_env *env);
+void	pop_last_env(t_env *env, char *cmd_tmp);
+void	update_envp(t_env *env, char **envp);
+char	**new_envp(t_env *env);
+int		len_env(t_env *env);
 #endif

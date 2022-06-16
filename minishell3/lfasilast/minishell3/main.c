@@ -40,7 +40,7 @@ t_nodes	**ft_parsing(t_nodes **nodes)
 	char	*str;
 
 	str = ft_strtrim(g_data.line, " ");
-	if (!str)
+	if (!ft_strcmp(str, ""))
 	{
 		free(str);
 		free(g_data.line);
@@ -91,6 +91,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	if (ac != 1 && printf("Error For argument"))
 		return (1);
+	g_data.exp = 0;
 	g_data.forks = 0;
 	g_data.exit_code = 1;
 	env = stock_env(envp); // stock env
