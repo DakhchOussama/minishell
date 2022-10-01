@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: odakhch <mbjaghou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: odakhch <odakhch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 14:32:43 by odakhch          #+#    #+#             */
 /*   Updated: 2022/06/20 20:25:38 by odakhch         ###   ########.fr       */
